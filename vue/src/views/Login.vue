@@ -1,8 +1,6 @@
 <template>
- <div class="container test">
-     <button type="button" class="btn btn-success">Success</button>
-     <button type="button" class="btn btn-info">Info</button>
-     <button type="button" class="btn btn-warning">Warning</button>
+ <div class="bg-success">
+     <h2>Login</h2>
   </div>
 </template>
 
@@ -25,7 +23,5 @@ let errorMsg = ref("");
 </script>
 
 <style scoped>
- .test{
-  background: purple;
- }
+ 
 </style> 

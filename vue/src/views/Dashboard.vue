@@ -1,9 +1,9 @@
 <template>
- <h1>Dashboard</h1>
+ <h1>Dashboard content here</h1>
 </template>
 
 <script setup>
-import store from "../store";
+// import store from "../store";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
  
