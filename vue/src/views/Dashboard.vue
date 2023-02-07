@@ -1,6 +1,6 @@
 <template>
- <div class="fluid-container p-2">
-      <h1>Dashboard content here <i class="bi bi-123"></i></h1>
+ <div class="fluid-container p-4">
+      <h1>Dashboard content here</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia fugit magnam laudantium rem beatae dicta assumenda dignissimos nihil perspiciatis ullam, similique voluptatibus suscipit vel pariatur sunt, dolor esse dolore?</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia fugit magnam laudantium rem beatae dicta assumenda dignissimos nihil perspiciatis ullam, similique voluptatibus suscipit vel pariatur sunt, dolor esse dolore?</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia fugit magnam laudantium rem beatae dicta assumenda dignissimos nihil perspiciatis ullam, similique voluptatibus suscipit vel pariatur sunt, dolor esse dolore?</p>
