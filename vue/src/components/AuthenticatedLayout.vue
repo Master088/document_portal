@@ -1,10 +1,17 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <div class="min-h-full">
-    <Sidebar></Sidebar>
-    <Header></Header>
-    <router-view :key="$route.path"></router-view>
-    <Footer></Footer>
+    <div class="sidebar">
+      <Sidebar></Sidebar>
+      <div class="header">
+        <Header></Header>
+        <router-view :key="$route.path" ></router-view>
+        <div class="footer">
+          <Footer></Footer>
+        </div>
+      </div>
+      
+    </div>
+    
   </div>
 </template>
 
@@ -54,5 +61,15 @@ export default {
 </script>
 
 <style scoped>
-
+.sidebar{
+  display: flex;
+  min-height: 100%;
+  position: relative;
+}
+.header{
+  flex-grow: 1;
+}
+.footer{
+  position: relative;
+}
 </style>
