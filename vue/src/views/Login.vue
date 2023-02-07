@@ -26,7 +26,7 @@
                         <!-- <h1 class="text-center text-success pt-2">_______________________________</h1> -->
                         <a href="#" class="forgot"><p class="forgot-txt pt-2">Forgot password?</p></a>
                         <div class=" text-center pb-5 pt-5">
-                            <button type="button" class="btn btn-success">Login a </button>
+                            <button type="button" class="btn btn-success">Login a1 </button>
                         </div>
                     </div>
                 </div>
