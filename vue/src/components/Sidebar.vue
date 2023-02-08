@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="sidebar">
           <div class="logo-container" align="center">
-            <img class="img-logo" src="../logos/logo.png" alt="logo">
+            <img class="img-logo" src="../assets/logos/logo.png" alt="logo">
             <p class="text-white mt-1">CLSU DOCUMENT PORTAL </p>
           </div>
           <div class="underline px-1">
