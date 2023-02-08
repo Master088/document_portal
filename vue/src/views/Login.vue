@@ -25,7 +25,7 @@
                         </div>
                         
                         <a href="#" class="forgot"><p class="forgot-txt pt-2">Forgot password?</p></a>
-                        <div class=" text-center pb-3 pt-3">
+                        <div class=" text-center pb-4 pt-4">
                             <button type="button" class="btn btn-success">Login  </button>
                         </div>
                     </div>
@@ -68,8 +68,8 @@ let errorMsg = ref("");
         color:#1f5f5b;
     }
     .img-logo{
-        width: 185px;
-        height: 185px;
+        width: 155px;
+        height: 155px;
     }
     .btn {
         min-width: 80%;
