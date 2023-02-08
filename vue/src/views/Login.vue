@@ -1,22 +1,22 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-6 pt-5 d-none d-md-block">
+        <div class="row ">
+            <div class="col-7 pt-5 d-none d-md-block">
                 <h1 class="clsu-title text-center ">CLSU DOCUMENT PORTAL</h1>
                 <div class="img-div text-center">
                     <img src="../assets/img/vector-image.png" alt="pic">
                 </div>
                 <h4 class="text-center">To keep connected with us please login your <br>account</h4>
             </div>
-            <div class="col-md-6 pt-5">
-                <div class="card">
-                    <div class="card-body">
+            <div class="col-md-5 pt-5">
+                <div class="card ">
+                    <div class="card-body ">
                         <div class=" clsu-logo text-center">
                             <img class="img-logo" src="../assets/logos/clsu-logo.png" alt="logo">
                         </div>
-                        <h3 class="text-center pb-4">Welcome Back</h3>
+                        <h3 class="text-center pb-2">Welcome Back</h3>
                         
-                        <div class="form pt-4 ">
+                        <div class="form pt-4">
                             <input class="input" placeholder="Username" required="" type="text"><i class="bi bi-envelope-fill text-white text-center"></i>
                             
                         </div>
@@ -25,7 +25,7 @@
                         </div>
                         
                         <a href="#" class="forgot"><p class="forgot-txt pt-2">Forgot password?</p></a>
-                        <div class=" text-center pb-5 pt-5">
+                        <div class=" text-center pb-3 pt-3">
                             <button type="button" class="btn btn-success">Login  </button>
                         </div>
                     </div>
@@ -77,7 +77,9 @@ let errorMsg = ref("");
     }
     .forgot{
         text-decoration:none;
-        top:50%;
+        display: flex;
+        justify-content: end;
+        padding: 0px 40px;
     }
     .input{
         outline: none;
@@ -105,7 +107,6 @@ let errorMsg = ref("");
     
     }
     .forgot-txt{
-        padding-left: 69%;
         color: #1f5f5b;
     }
    

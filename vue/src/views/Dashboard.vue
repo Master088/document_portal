@@ -34,12 +34,5 @@ let errorMsg = ref("");
  
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600;700&display=swap');
-*{
-  /* padding: 10px; */
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-}
+
 </style>

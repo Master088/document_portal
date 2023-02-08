@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-full">
+  <div class="min-h-full test">
     <div class="sidebar">
       <Sidebar></Sidebar>
       <div class="header">
@@ -63,7 +63,7 @@ export default {
 <style scoped>
 .sidebar{
   display: flex;
-  min-height: 100%;
+  min-height: 100vh !important;
   position: relative;
 }
 .header{
