@@ -12,18 +12,18 @@
                 <div class="card">
                     <div class="card-body">
                         <div class=" clsu-logo text-center">
-                            <img class="img-logo" src="../assets/logos/logo.png" alt="logo">
+                            <img class="img-logo" src="../assets/logos/clsu-logo.png" alt="logo">
                         </div>
                         <h3 class="text-center pb-4">Welcome Back</h3>
-                        <!-- <h1 class="text-center text-success pt-5">_______________________________</h1> -->
+                        
                         <div class="form pt-4 ">
-                            <input class="input" placeholder="Username" required="" type="text"><i class="bi bi-envelope-fill text-white"></i>
+                            <input class="input" placeholder="Username" required="" type="text"><i class="bi bi-envelope-fill text-white text-center"></i>
                             
                         </div>
                         <div class="form pt-4">
-                            <input class="input " placeholder="Password" required="" type="password"><i class="bi bi-lock-fill text-white "></i>
+                            <input class="input " placeholder="Password" required="" type="password"><i class="bi bi-lock-fill text-white text-center"></i>
                         </div>
-                        <!-- <h1 class="text-center text-success pt-2">_______________________________</h1> -->
+                        
                         <a href="#" class="forgot"><p class="forgot-txt pt-2">Forgot password?</p></a>
                         <div class=" text-center pb-5 pt-5">
                             <button type="button" class="btn btn-success">Login  </button>
@@ -54,8 +54,8 @@ let errorMsg = ref("");
 </script>
 
 <style scoped>
-
- .clsu-title {
+    
+    .clsu-title {
       text-shadow: 3px 3px #e0e0e0;
     }
     .card{
@@ -68,7 +68,7 @@ let errorMsg = ref("");
         color:#1f5f5b;
     }
     .img-logo{
-        width: 200px;
+        width: 185px;
         height: 185px;
     }
     .btn {
@@ -93,12 +93,15 @@ let errorMsg = ref("");
         position:absolute;
         left:85%;
         border-radius: 100%;
-        top :17px;
+        top :28%;
+        background-color: #1f5f5b;
+        padding: 1px 5px 10px 5px;
+         
         
     }
     .bi{
-        background-color: #1f5f5b;
-        padding: 5px 5px 5px 5px;
+        height: 27px;
+        width:27px;
     
     }
     .forgot-txt{
