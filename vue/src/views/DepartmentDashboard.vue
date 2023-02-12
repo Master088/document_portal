@@ -8,7 +8,7 @@
   <div class="container p-3">
     <div class="input-group mb-3 search">
       <input type="text" class="form-control shadow " placeholder="Search..." aria-label="Search..."
-        aria-describedby="basic-addon2"><span class="input-group-text"><i class="bi bi-search"></i></span>
+        aria-describedby="basic-addon2"><span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
     </div>
   </div>
   <div class="container">
@@ -106,6 +106,21 @@
       </table>
     </div>
   </div>
+  <div class="container mb-5">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-end">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script setup>
@@ -145,7 +160,7 @@ a {
   /* border: solid 1px red; */
   width: 40px;
   float: right;
-  margin-top: -60px;
+  margin-top: -50px;
   position: relative;
 }
 .icon{
@@ -154,6 +169,7 @@ a {
 .card-box{
   height: 30vh;
   transition: .4s;
+  
 }
 .card-box:hover{
   background: #ADC9C5;
@@ -201,5 +217,9 @@ a {
   background: #4aaba1;
   color: rgb(255, 255, 255);
   transition: .4s ease;
+}
+.search-icon{
+  width: 60px;
+  justify-content: center;
 }
 </style>

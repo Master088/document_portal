@@ -6,8 +6,8 @@
           aria-haspopup="true" aria-expanded="false">
           John Doe
         </button>
-        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <a class="dropdown-item" href="#" @click="logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
+        <div class="dropdown-menu mt-1" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item text-center" href="#" @click="logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
         </div>
       </div>
     </div>
@@ -51,6 +51,7 @@ function logout(ev) {
 .logout {
   float: right;
   /* border: solid 1px red; */
+  transition: .4s ease;
 }
 .icon-size {
   font-size: 1.2rem;
