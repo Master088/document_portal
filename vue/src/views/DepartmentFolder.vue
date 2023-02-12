@@ -1,6 +1,9 @@
 <template>
-  <div class="fluid-container p-4">
-    <h1>Dashboard Folder</h1>
+  <div class="fluid-container p-3">
+    <h3>Dashboard Folder</h3>
+  </div>
+  <div class="fluid-container">
+    <button>Create Folder</button>
   </div>
 </template>
 
