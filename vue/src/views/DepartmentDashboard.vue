@@ -144,7 +144,7 @@
         </table>
       </div>
     </div>
-    <div class="container mb-5">
+    <div class="container-fluid mb-5">
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
           <li class="page-item disabled">
