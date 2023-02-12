@@ -15,11 +15,15 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\User::class, 'insert_by');
-            $table->tinyInteger('is_archive');
+            $table->foreignIdFor(\App\Models\User::class, 'created_by');
+            $table->tinyInteger('is_archive')->default(0);
             $table->foreignIdFor(\App\Models\User::class, 'last_modified_id');
             $table->string('name', 100);
             $table->string('type', 20);
+            // change this to foriegn key later
+            $table->bigInteger('parent');
+            $table->bigInteger('doc_left');
+            $table->bigInteger('doc_right');
             $table->timestamp('date_modified')->nullable();
             $table->timestamps();
         });
