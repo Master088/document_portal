@@ -1,24 +1,39 @@
 import { createRouter, createWebHistory } from "vue-router";
- 
+
 import Login from "../views/Login.vue";
 import DefaultLayout from "../components/DefaultLayout.vue";
 import AuthenticatedLayout from "../components/AuthenticatedLayout.vue";
 
-import Dashboard from "../views/Dashboard.vue";
+import DepartmentDashboard from "../views/DepartmentDashboard.vue";
+import DepartmentFolder from "../views/DepartmentFolder.vue";
+import DepartmentFolderContent from "../views/DepartmentFolderContent.vue";
+
 import NotFound from "../views/NotFound.vue";
- 
- 
+
 import store from "../store";
 
 const routes = [
-
   {
-    path: "/",
-    redirect: "/dashboard",
+    path: "/department",
+    redirect: "/department/dashboard",
     component: AuthenticatedLayout,
     meta: { requiresAuth: true },
     children: [
-      { path: "/dashboard", name: "Dashboard", component: Dashboard },
+      {
+        path: "/department/dashboard",
+        name: "DepartmentDashBoard",
+        component: DepartmentDashboard,
+      },
+      {
+        path: "/department/folder/:department_id",
+        name: "DepartmentFolder",
+        component: DepartmentFolder,
+      },
+      {
+        path: "/department/folder/:department_id/year/:year/:id",
+        name: "DepartmentFolderContent",
+        component: DepartmentFolderContent,
+      },
     ],
   },
 
@@ -27,21 +42,21 @@ const routes = [
     redirect: "/login",
     name: "Auth",
     component: DefaultLayout,
-    meta: {isGuest: true},
+    meta: { isGuest: true },
     children: [
       {
         path: "/login",
         name: "Login",
         component: Login,
-      }
+      },
     ],
   },
-  
+
   {
-    path: '/404',
-    name: 'NotFound',
-    component: NotFound
-  }
+    path: "/404",
+    name: "NotFound",
+    component: NotFound,
+  },
 ];
 
 const router = createRouter({
@@ -50,10 +65,10 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !store.state.user.token) {
+  if (to.meta.requiresAuth && !store.state.auth.token) {
     next({ name: "Login" });
-  } else if (store.state.user.token && to.meta.isGuest) {
-    next({ name: "Dashboard" });
+  } else if (store.state.auth.token && to.meta.isGuest) {
+    next({ name: "DepartmentDashBoard" });
   } else {
     next();
   }

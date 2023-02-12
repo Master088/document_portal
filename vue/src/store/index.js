@@ -1,17 +1,13 @@
 import { createStore } from "vuex";
-import axiosClient from "../axios";
+
+import auth from "./modules/auth/index";
 
 const store = createStore({
-  state: {
-    user: {
-      data: {},
-      token:"",
-    },
-  },  
+  state: {},
   getters: {},
   actions: {},
   mutations: {},
-  modules: {},
+  modules: { auth },
 });
 
 export default store;

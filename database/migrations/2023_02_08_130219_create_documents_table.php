@@ -18,7 +18,7 @@ class CreateDocumentsTable extends Migration
             $table->foreignIdFor(\App\Models\User::class, 'insert_by');
             $table->tinyInteger('is_archive');
             $table->foreignIdFor(\App\Models\User::class, 'last_modified_id');
-            $table->string('file_name', 100);
+            $table->string('name', 100);
             $table->string('type', 20);
             $table->timestamp('date_modified')->nullable();
             $table->timestamps();
