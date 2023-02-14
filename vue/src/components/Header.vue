@@ -1,7 +1,7 @@
 <template>
   <header class="bg-light">
-    <div class="container">
-      <div class="btn-group logout py-3" role="group">
+    <div class="fluid-container p-1">
+      <div class="btn-group logout py-3 justify-content-end" role="group">
         <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           John Doe
@@ -52,6 +52,7 @@ function logout(ev) {
   float: right;
   /* border: solid 1px red; */
   transition: .4s ease;
+  margin-right: 30px;
 }
 .icon-size {
   font-size: 1.2rem;
