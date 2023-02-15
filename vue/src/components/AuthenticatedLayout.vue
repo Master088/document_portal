@@ -65,11 +65,13 @@ export default {
   display: flex;
   min-height: 100vh !important;
   position: relative;
+  
 }
 .header{
   flex-grow: 1;
 }
 .footer{
-  position: relative;
+  position: sticky;
+  top: 100%;
 }
 </style>

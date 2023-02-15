@@ -1,12 +1,21 @@
 <template>
-  <div class="px-lg-5">
+  <div class="px-lg-5" >
     <div class="container-fluid p-3">
-      <h3>Department Office</h3>
-      <div class="right-menu">
+      <h4>Department Office</h4>
+      <div class="right-menu"  @click="toggleSidebar">
         <i class="bi bi-list icon"></i>
       </div>
     </div>
-    <div class="container-fluid p-3">
+    <div class="fluid-container sidebar" :style="{ width: sidebarWidth }">
+      <p>
+        <span v-if="!collapsed">
+          <span class="collapsed-icon" @click="toggleSidebar" >
+            <i class="bi bi-x-circle"></i> Activity Log
+          </span>
+        </span>
+      </p>
+    </div>
+    <div class="container-fluid p-3 d-flex justify-content-center">
       <div class="input-group mb-3 search">
         <input
           type="text"
@@ -20,39 +29,44 @@
       </div>
     </div>
     <div class="container-fluid">
-      <div class="row row-cols-1 row-cols-md-4 text-center">
+      <div class="row row-cols-1 row-cols-md-4 text-center ">
+        <div class="col mb-4 ">
+          <a href="#">
+            <div class="card border-0 card-box">
+              <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
+              <div class="card-img-overlay">
+                <h4 class="card-title fw-normal"><u class="underline">2023</u> </h4>
+              </div>
+            </div>
+          </a>
+        </div>
+        
         <div class="col mb-4">
           <a href="#">
-            <div class="card card-box shadow">
-              <div class="card-body">
-                <h4 class="card-title">2023</h4>
+            <div class="card border-0 card-box ">
+              <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
+              <div class="card-img-overlay">
+                <h4 class="card-title fw-normal"><u class="underline">2022</u> </h4>
               </div>
             </div>
           </a>
         </div>
         <div class="col mb-4">
           <a href="#">
-            <div class="card card-box">
-              <div class="card-body shadow">
-                <h4 class="card-title">2022</h4>
+            <div class="card border-0 card-box ">
+              <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
+              <div class="card-img-overlay">
+                <h4 class="card-title fw-normal"><u class="underline">2020</u> </h4>
               </div>
             </div>
           </a>
         </div>
         <div class="col mb-4">
           <a href="#">
-            <div class="card card-box shadow">
-              <div class="card-body">
-                <h4 class="card-title">2021</h4>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="#">
-            <div class="card card-box shadow">
-              <div class="card-body">
-                <h5 class="card-title"><u class="underline">View More</u></h5>
+            <div class="card border-0 card-box ">
+              <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
+              <div class="card-img-overlay">
+                <h4 class="card-title fw-normal"><u class="underline">View More</u> </h4>
               </div>
             </div>
           </a>
@@ -62,8 +76,8 @@
     <div class="container-fluid mt-2">
       <h5>New Files</h5>
       <div class="table-container mt-4 mb-4">
-        <table class="table table-hover table-responsive">
-          <thead>
+        <table class="table table-hover table-responsive fw">
+          <thead >
             <tr>
               <th scope="col">Icon</th>
               <th scope="col">Name</th>
@@ -167,7 +181,7 @@
 <script setup>
 // import store from "../store";
 import { useRouter } from "vue-router";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const router = useRouter();
 
@@ -177,6 +191,15 @@ const user = {
 };
 let loading = ref(false);
 let errorMsg = ref("");
+
+const collapsed = ref(true)
+const toggleSidebar = () => (collapsed.value = !collapsed.value)
+
+const SIDEBAR_WIDTH = 200
+const SIDEBAR_WIDTH_COLLAPSED = 0
+const sidebarWidth = computed(
+  () => `${collapsed.value ? SIDEBAR_WIDTH_COLLAPSED : SIDEBAR_WIDTH}px`
+)
 </script>
 
 <style scoped>
@@ -192,13 +215,9 @@ a {
   color: inherit;
 }
 .search {
-  height: 7vh;
-}
-.underline {
-  text-decoration: underline;
+  width: 90%;
 }
 .right-menu {
-  /* border: solid 1px red; */
   width: 40px;
   float: right;
   margin-top: -50px;
@@ -208,44 +227,20 @@ a {
   font-size: 2.5rem;
 }
 .card-box {
-  height: 30vh;
   transition: 0.4s;
 }
 .card-box:hover {
-  background: #adc9c5;
   color: aliceblue;
   transition: all 0.4s ease;
+  
 }
-.view {
-  background: #1c9b8e;
+.card-box .underline:hover{
   color: rgb(255, 255, 255);
-}
-.view:hover {
-  background: #21a99b;
-  color: aliceblue;
-}
-.edit {
-  background: #ff8300;
-  color: rgb(255, 255, 255);
-}
-
-.edit:hover {
-  background: #f58f22;
-  color: aliceblue;
-}
-.del {
-  background: #df362d;
-  color: rgb(255, 255, 255);
-}
-
-.del:hover {
-  background: #e04c44;
-  color: aliceblue;
+  text-decoration: underline;
 }
 .action {
   padding: 0;
   margin: 0;
-  /* border: solid 1px red; */
   width: 17%;
 }
 .f-icon {
@@ -261,5 +256,40 @@ a {
 .search-icon {
   width: 60px;
   justify-content: center;
+}
+.card-title{
+  /* font-size: 1.7em; */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%) translateY(-50%);
+}
+.fw{
+  font-weight: 500;
+}
+.sidebar {
+  color: white;
+  background-color: #16796F;
+  float: right;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  transition: 0.6s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.collapsed-icon {
+  position: absolute;
+  top: 0;
+  padding: 10px;
+  transition: 0.2s linear;
+  /* border: solid 1px red; */
 }
 </style>

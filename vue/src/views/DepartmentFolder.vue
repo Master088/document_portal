@@ -1,8 +1,8 @@
 <template>
-  <div class="container p-3">
-    <h3>Dashboard Folder</h3>
+  <div class="fluid-container p-3">
+    <h4>Dashboard Folder</h4>
   </div>
-  <div class="container justify-content-end d-flex px-3">
+  <div class="fluid-container justify-content-end d-flex px-3">
     <button type="button" class="btn f-create shadow" data-bs-toggle="modal" data-bs-target="#create">
       <i class="bi bi-folder-plus"></i> Create Folder
     </button>
@@ -17,7 +17,13 @@
             </button>
           </div>
           <div class="modal-body">
-            ...
+            <form>
+              <div class="form-group">
+                <label for="year">Year <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="year" placeholder="Enter Year">
+                
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -27,61 +33,57 @@
       </div>
     </div>
   </div>
-  <div class="container p-3">
+  <div class="container-fluid p-3 d-flex justify-content-center mt-3">
     <div class="input-group mb-3 search">
       <input type="text" class="form-control shadow " placeholder="Search..." aria-label="Search..."
         aria-describedby="basic-addon2"><span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
     </div>
   </div>
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-4 text-center">
-      <div class="col mb-4">
-        <a href="#">
-          <div class="card card-box shadow">
-            <div class="card-body">
-              <h4 class="card-title">2023</h4>
+  <div class="container-fluid">
+      <div class="row row-cols-1 row-cols-md-4 text-center ">
+        <div class="col mb-4 ">
+          <a href="#">
+            <div class="card border-0 card-box ">
+              <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
+              <div class="card-img-overlay">
+                <h4 class="card-title fw-normal"><u class="underline">2023</u> </h4>
+              </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="col mb-4">
-        <a href="#">
-          <div class="card card-box">
-            <div class="card-body shadow">
-              <h4 class="card-title">2022</h4>
+          </a>
+        </div>
+        
+        <div class="col mb-4">
+          <a href="#">
+            <div class="card border-0 card-box ">
+              <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
+              <div class="card-img-overlay">
+                <h4 class="card-title fw-normal"><u class="underline">2022</u> </h4>
+              </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="col mb-4">
-        <a href="#">
-          <div class="card card-box shadow">
-            <div class="card-body">
-              <h4 class="card-title">2021</h4>
+          </a>
+        </div>
+        <div class="col mb-4">
+          <a href="#">
+            <div class="card border-0 card-box ">
+              <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
+              <div class="card-img-overlay">
+                <h4 class="card-title fw-normal"><u class="underline">2020</u> </h4>
+              </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="col mb-4 ">
-        <a href="#">
-          <div class="card card-box shadow">
-            <div class="card-body">
-              <h5 class="card-title">2019</h5>
+          </a>
+        </div>
+        <div class="col mb-4">
+          <a href="#">
+            <div class="card border-0 card-box ">
+              <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
+              <div class="card-img-overlay">
+                <h4 class="card-title fw-normal"><u class="underline">View More</u> </h4>
+              </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="col mb-4">
-        <a href="#">
-          <div class="card card-box shadow">
-            <div class="card-body">
-              <h4 class="card-title">2018</h4>
-            </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script setup>
@@ -120,21 +122,35 @@ a {
   background: #2d978c;
   color: aliceblue;
 }
-.search {
-  height: 7vh;
-}
 .card-box {
-  height: 30vh;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .card-box:hover {
-  background: #ADC9C5;
   color: aliceblue;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
+
+}
+
+.card-box .underline:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
 }
 .search-icon {
   width: 60px;
   justify-content: center;
+}
+.search {
+  width: 90%;
+}
+.card-title {
+  /* font-size: 1.7em; */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%) translateY(-50%);
 }
 </style>
