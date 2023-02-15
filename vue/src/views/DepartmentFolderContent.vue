@@ -14,7 +14,7 @@
         aria-describedby="basic-addon2"><span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
     </div>
   </div>
-  <div class="container ps-3 pb-2">
+  <div class="container pt-2 pb-1">
      <button type="button" class="filter btn btn-light "><i class="bi bi-funnel "></i> <b>Filter</b></button>
   </div>
 
@@ -43,7 +43,7 @@
     </div>
   </div>
   
-  <div class="container pt-3 pb-4">
+  <div class="container pt-3 pb-3">
       <div class="card">
         <div class="card-body">
           <table class="table">
