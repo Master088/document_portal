@@ -1,23 +1,24 @@
 <template>
-  <div class="px-lg-5" >
+  <div class="px-lg-5">
     <div class="container-fluid p-3">
       <h4>Department Office</h4>
       <div class="right-menu"  @click="toggleSidebar">
         <i class="bi bi-list icon"></i>
       </div>
     </div>
-    <div class="fluid-container sidebar" :style="{ width: sidebarWidth }">
-      <p>
-        <span v-if="!collapsed">
-          <span class="collapsed-icon" @click="toggleSidebar" >
-            <i class="bi bi-x-circle"></i> Activity Log
-          </span>
-        </span>
-      </p>
+    <div v-if="collapsed" class="fluid-container sidebar">
+      <span class="collapsed-icon" @click="toggleSidebar">
+        <i class="bi bi-x-lg " style="font-size: larger;"></i>
+      </span>
+      <div class="p-3 mt-5">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum natus commodi enim nostrum repellat repellendus earum aspernatur odit distinctio ducimus obcaecati mollitia consequatur, ea explicabo ipsa ipsam cum, vel doloremque?</p>
+      </div>
     </div>
     <div class="container-fluid p-3 d-flex justify-content-center">
       <div class="input-group mb-3 search">
         <input
+          v-model="search"
+          @keyup.enter="handleSearch"
           type="text"
           class="form-control shadow"
           placeholder="Search..."
@@ -35,7 +36,7 @@
             <div class="card border-0 card-box">
               <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
               <div class="card-img-overlay">
-                <h4 class="card-title fw-normal"><u class="underline">2023</u> </h4>
+                <h2 class="card-title fw-normal"><u class="underline">2023</u> </h2>
               </div>
             </div>
           </a>
@@ -46,7 +47,7 @@
             <div class="card border-0 card-box ">
               <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
               <div class="card-img-overlay">
-                <h4 class="card-title fw-normal"><u class="underline">2022</u> </h4>
+                <h2 class="card-title fw-normal"><u class="underline">2022</u> </h2>
               </div>
             </div>
           </a>
@@ -56,7 +57,7 @@
             <div class="card border-0 card-box ">
               <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
               <div class="card-img-overlay">
-                <h4 class="card-title fw-normal"><u class="underline">2020</u> </h4>
+                <h2 class="card-title fw-normal"><u class="underline">2020</u> </h2>
               </div>
             </div>
           </a>
@@ -66,7 +67,7 @@
             <div class="card border-0 card-box ">
               <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
               <div class="card-img-overlay">
-                <h4 class="card-title fw-normal"><u class="underline">View More</u> </h4>
+                <h5 class="card-title fw-normal"><u class="underline">View More</u> </h5>
               </div>
             </div>
           </a>
@@ -76,11 +77,11 @@
     <div class="container-fluid mt-2">
       <h5>New Files</h5>
       <div class="table-container mt-4 mb-4">
-        <table class="table table-hover table-responsive fw">
+        <table class="table table-responsive">
           <thead >
             <tr>
               <th scope="col">Icon</th>
-              <th scope="col">Name</th>
+              <th scope="col">File Name</th>
               <th scope="col">Last Modified</th>
               <th scope="col">Date modified</th>
               <th scope="col">Type</th>
@@ -94,18 +95,18 @@
                   ><i class="bi bi-file-earmark-text"></i
                 ></a>
               </td>
-              <td>Mark</td>
+              <td class="fw-bold">Mark</td>
               <td>Otto</td>
               <td>02/12/2023</td>
               <td>File</td>
               <td class="action">
-                <a type="button" class="btn m-1 view"
+                <a type="button" class="btn m-1"
                   ><i class="bi bi-eye-fill"></i
                 ></a>
-                <a type="button" class="btn edit m-1"
+                <a type="button" class="btn m-1"
                   ><i class="bi bi-pencil-square"></i
                 ></a>
-                <a type="button" class="btn del m-1"
+                <a type="button" class="btn m-1"
                   ><i class="bi bi-trash"></i
                 ></a>
               </td>
@@ -116,18 +117,18 @@
                   ><i class="bi bi-folder2-open"></i
                 ></a>
               </td>
-              <td>Jacob</td>
+              <td class="fw-bold">Jacob</td>
               <td>Thornton</td>
               <td>02/12/2023</td>
               <td>Folder</td>
               <td class="action">
-                <a type="button" class="btn m-1 view"
+                <a type="button" class="btn m-1"
                   ><i class="bi bi-eye-fill"></i
                 ></a>
-                <a type="button" class="btn edit m-1"
+                <a type="button" class="btn m-1"
                   ><i class="bi bi-pencil-square"></i
                 ></a>
-                <a type="button" class="btn del m-1"
+                <a type="button" class="btn m-1"
                   ><i class="bi bi-trash"></i
                 ></a>
               </td>
@@ -138,18 +139,18 @@
                   ><i class="bi bi-folder2-open"></i
                 ></a>
               </td>
-              <td>Larry the Bird</td>
+              <td class="fw-bold">Larry the Bird</td>
               <td>Ladish</td>
               <td>02/12/2023</td>
               <td>Folder</td>
               <td class="action">
-                <a type="button" class="btn m-1 view"
+                <a type="button" class="btn m-1"
                   ><i class="bi bi-eye-fill"></i
                 ></a>
-                <a type="button" class="btn edit m-1"
+                <a type="button" class="btn m-1"
                   ><i class="bi bi-pencil-square"></i
                 ></a>
-                <a type="button" class="btn del m-1"
+                <a type="button" class="btn m-1"
                   ><i class="bi bi-trash"></i
                 ></a>
               </td>
@@ -192,14 +193,30 @@ const user = {
 let loading = ref(false);
 let errorMsg = ref("");
 
-const collapsed = ref(true)
-const toggleSidebar = () => (collapsed.value = !collapsed.value)
+</script>
 
-const SIDEBAR_WIDTH = 200
-const SIDEBAR_WIDTH_COLLAPSED = 0
-const sidebarWidth = computed(
-  () => `${collapsed.value ? SIDEBAR_WIDTH_COLLAPSED : SIDEBAR_WIDTH}px`
-)
+<script>
+export default {
+  data(){
+    return{
+      collapsed: false,
+      search: [],
+      searchData: '',
+    }
+  },
+  methods:{
+    toggleSidebar(){
+      this.collapsed = !this.collapsed
+    },
+    handleSearch(e){
+      if (e.key) {
+       this.searchData = this.search
+       console.log(this.searchData)
+      }
+      this.search = ''
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -243,6 +260,10 @@ a {
   margin: 0;
   width: 17%;
 }
+.action a:hover {
+  border: solid grey 1px;
+  transition: all .4s ease;
+}
 .f-icon {
   background: #21a99b;
   color: rgb(255, 255, 255);
@@ -271,8 +292,8 @@ a {
   font-weight: 500;
 }
 .sidebar {
-  color: white;
-  background-color: #16796F;
+  color: rgb(86, 84, 84);
+  background-color: #e5e6e6;
   float: right;
   position: fixed;
   z-index: 1;
@@ -280,13 +301,16 @@ a {
   right: 0;
   bottom: 0;
   padding: 0;
-  transition: 0.6s ease;
+  transition: all 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
+  width: 15%;
 }
 
 .collapsed-icon {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
   top: 0;
   padding: 10px;
   transition: 0.2s linear;

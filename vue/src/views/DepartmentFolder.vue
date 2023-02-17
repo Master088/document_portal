@@ -17,18 +17,21 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form @submit.prevent="handleSubmit">
               <div class="form-group">
                 <label for="year">Year <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="year" placeholder="Enter Year">
-                
+                <input v-model="year" type="text" class="form-control" id="year" placeholder="Enter Year">
+                <div v-if="yearValidation" class="text-danger">
+                  {{ yearValidation }}
+                </div>
               </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -46,7 +49,7 @@
             <div class="card border-0 card-box ">
               <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
               <div class="card-img-overlay">
-                <h4 class="card-title fw-normal"><u class="underline">2023</u> </h4>
+                <h2 class="card-title fw-normal"><u class="underline">2023</u> </h2>
               </div>
             </div>
           </a>
@@ -57,7 +60,7 @@
             <div class="card border-0 card-box ">
               <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
               <div class="card-img-overlay">
-                <h4 class="card-title fw-normal"><u class="underline">2022</u> </h4>
+                <h2 class="card-title fw-normal"><u class="underline">2022</u> </h2>
               </div>
             </div>
           </a>
@@ -67,7 +70,7 @@
             <div class="card border-0 card-box ">
               <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
               <div class="card-img-overlay">
-                <h4 class="card-title fw-normal"><u class="underline">2020</u> </h4>
+                <h2 class="card-title fw-normal"><u class="underline">2020</u> </h2>
               </div>
             </div>
           </a>
@@ -77,7 +80,7 @@
             <div class="card border-0 card-box ">
               <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
               <div class="card-img-overlay">
-                <h4 class="card-title fw-normal"><u class="underline">View More</u> </h4>
+                <h2 class="card-title fw-normal"><u class="underline">2019</u> </h2>
               </div>
             </div>
           </a>
@@ -99,6 +102,26 @@ const user = {
 };
 let loading = ref(false);
 let errorMsg = ref("");
+
+</script>
+<!-- Lopez: ako nag add nito, sori try ko lang -->
+<script>
+export default {
+  data() {
+    return{
+      year: '',
+      yearValidation: '',
+    }
+  },
+  methods: {
+    handleSubmit(){
+      console.log(this.year)
+      this.yearValidation = this.year.length < 4 || this.year.length > 4 ? 'The year must at least 4 number only' : ''
+      console.log(this.yearValidation)
+      this.year = ''
+    },
+  },
+}
 </script>
 
 <style scoped>
