@@ -2,9 +2,11 @@
   <!-- <div class="fluid-container p-4"> -->
     <!-- <h1>Dashboard Folder Content</h1>
   </div> -->
+  
   <div class="container p-3">
+     <h5>Document > 2022</h5>
      <div class="button d-flex justify-content-end">
-      <button type="button" class="btn text-white m-1"><b>Create Folder</b></button>
+      <button type="button" class="btn text-white m-1" data-bs-toggle="modal" data-bs-target="#myModal"><b>Create NewFolder</b></button>
       <button type="button" class="btn text-white m-1"><b>Upload New File</b></button>
      </div>
   </div>
@@ -15,10 +17,10 @@
     </div>
   </div>
   <div class="container pt-2 pb-1">
-     <button type="button" class="filter btn btn-light "><i class="bi bi-funnel "></i> <b>Filter</b></button>
+     <button type="button" class="filter btn btn-light" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter"><i class="bi bi-funnel "></i> <b>Filter</b></button>
   </div>
 
-  <div class="container ">
+  <div class="container collapse" id="collapseFilter" >
     <div class="card">
       <div class="card-body ">
           <div class="row">
@@ -43,7 +45,7 @@
     </div>
   </div>
   
-  <div class="container pt-3 pb-3">
+  <div class="container pt-2 pb-3">
       <div class="card">
         <div class="card-body">
           <table class="table">
@@ -77,7 +79,7 @@
               </tr>
               <tr>
                 <th scope="row"><i class="bi bi-folder fs-5"></i></th>
-                <td>Dept.File</td>
+                <td>Dept.Folder</td>
                 <td>Thornton</td>
                 <td>13/02/2023</td>
                 <td>folder</td>
@@ -134,6 +136,30 @@
         </ul>
       </nav>
     </div>
+    <div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create New Folder</h4>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <label for="email"><b>Folder Name</b></label>
+        <input type="text" class="form-control" id="new-folder" placeholder="Enter Folder Name" name="new-folder">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"><b><i class="bi bi-folder text-white"></i> Create</b></button>
+      </div>
+
+    </div>
+  </div>
+</div>
 </template>
 
 <script setup>
