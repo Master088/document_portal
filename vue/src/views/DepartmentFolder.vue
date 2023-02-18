@@ -17,13 +17,10 @@
             </button>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="handleSubmit">
+            <form>
               <div class="form-group">
                 <label for="year">Year <span class="text-danger">*</span></label>
-                <input v-model="year" type="text" class="form-control" id="year" placeholder="Enter Year">
-                <div v-if="yearValidation" class="text-danger">
-                  {{ yearValidation }}
-                </div>
+                <input type="text" class="form-control" id="year" placeholder="Enter Year">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -31,7 +28,6 @@
             </div>
             </form>
           </div>
-          
         </div>
       </div>
     </div>
@@ -103,25 +99,6 @@ const user = {
 let loading = ref(false);
 let errorMsg = ref("");
 
-</script>
-<!-- Lopez: ako nag add nito, sori try ko lang -->
-<script>
-export default {
-  data() {
-    return{
-      year: '',
-      yearValidation: '',
-    }
-  },
-  methods: {
-    handleSubmit(){
-      console.log(this.year)
-      this.yearValidation = this.year.length < 4 || this.year.length > 4 ? 'The year must at least 4 number only' : ''
-      console.log(this.yearValidation)
-      this.year = ''
-    },
-  },
-}
 </script>
 
 <style scoped>
