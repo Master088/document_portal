@@ -6,11 +6,14 @@
         <i class="bi bi-list icon"></i>
       </div>
     </div>
-    <div v-if="collapsed" class="fluid-container sidebar">
+    <div v-if="collapsed" class="fluid-container sidebar shadow-lg">
       <span class="collapsed-icon" @click="toggleSidebar">
         <i class="bi bi-x-lg " style="font-size: larger;"></i>
       </span>
       <div class="p-3 mt-5">
+        <div class="justify-content-center d-flex mb-3">
+          <h5>Activity Log</h5>
+        </div>
         <p>Lorem ipsum dolor sit amet consectetur asasasadipisicing elit. Eum natus commodi enim nostrum repellat repellendus earum aspernatur odit distinctio ducimus obcaecati mollitia consequatur, ea explicabo ipsa ipsam cum, vel doloremque?</p>
       </div>
     </div>
@@ -278,28 +281,36 @@ a {
   font-weight: 500;
 }
 .sidebar {
-  color: rgb(86, 84, 84);
-  background-color: #e5e6e6;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
   float: right;
   position: fixed;
   z-index: 1;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
   bottom: 0;
   padding: 0;
   transition: all 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
   width: 15%;
+  border-radius: 10px;
+  height: 97%;
+  box-sizing: content-box;
+  overflow: hidden;
 }
 
 .collapsed-icon {
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 0;
+  top: 10px;
   padding: 10px;
   transition: 0.2s linear;
+  transition-duration: 400ms;
   /* border: solid 1px red; */
+}
+.collapsed-icon:hover{
+  transform: rotate(90deg);
 }
 </style>
