@@ -17,8 +17,6 @@
     <div class="container-fluid p-3 d-flex justify-content-center">
       <div class="input-group mb-3 search">
         <input
-          v-model="search"
-          @keyup.enter="handleSearch"
           type="text"
           class="form-control shadow"
           placeholder="Search..."
@@ -200,21 +198,12 @@ export default {
   data(){
     return{
       collapsed: false,
-      search: [],
-      searchData: '',
     }
   },
   methods:{
     toggleSidebar(){
       this.collapsed = !this.collapsed
     },
-    handleSearch(e){
-      if (e.key) {
-       this.searchData = this.search
-       console.log(this.searchData)
-      }
-      this.search = ''
-    }
   }
 }
 </script>
