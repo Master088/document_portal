@@ -53,7 +53,8 @@ const routes = [
   },
 
   {
-    path: "/404",
+    // path: "/404",
+    path: "/:catchAll(.*)", //lopez: try ko lang
     name: "NotFound",
     component: NotFound,
   },
