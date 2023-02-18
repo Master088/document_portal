@@ -11,7 +11,7 @@
         <i class="bi bi-x-lg " style="font-size: larger;"></i>
       </span>
       <div class="p-3 mt-5">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum natus commodi enim nostrum repellat repellendus earum aspernatur odit distinctio ducimus obcaecati mollitia consequatur, ea explicabo ipsa ipsam cum, vel doloremque?</p>
+        <p>Lorem ipsum dolor sit amet consectetur asasasadipisicing elit. Eum natus commodi enim nostrum repellat repellendus earum aspernatur odit distinctio ducimus obcaecati mollitia consequatur, ea explicabo ipsa ipsam cum, vel doloremque?</p>
       </div>
     </div>
     <div class="container-fluid p-3 d-flex justify-content-center">
