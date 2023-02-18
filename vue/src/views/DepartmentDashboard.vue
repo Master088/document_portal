@@ -265,14 +265,11 @@ a {
   transition: all .4s ease;
 }
 .f-icon {
-  background: #21a99b;
-  color: rgb(255, 255, 255);
-  transition: 0.4s ease;
+  /* background: #21a99b; */
+  color: #4aaba1;
 }
 .f-icon:hover {
-  background: #4aaba1;
-  color: rgb(255, 255, 255);
-  transition: 0.4s ease;
+  color: #4aaba1;
 }
 .search-icon {
   width: 60px;
