@@ -6,8 +6,8 @@
   <div class="container p-3">
      <h5>Document > 2022</h5>
      <div class="button d-flex justify-content-end">
-      <button type="button" class="btn text-white m-1" data-bs-toggle="modal" data-bs-target="#myModal"><b>Create NewFolder</b></button>
-      <button type="button" class="btn text-white m-1"><b>Upload New File</b></button>
+      <button type="button" class="btn text-white m-1" data-bs-toggle="modal" data-bs-target="#new-folder"><b>Create NewFolder</b></button>
+      <button type="button" class="btn text-white m-1" data-bs-toggle="modal" data-bs-target="#upload"><b>Upload New File</b></button>
      </div>
   </div>
   <div class="container ">
@@ -136,7 +136,7 @@
         </ul>
       </nav>
     </div>
-    <div class="modal fade" id="myModal">
+<div class="modal fade" id="new-folder">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -153,8 +153,63 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary"><b><i class="bi bi-folder text-white"></i> Create</b></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="upload">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Upload File to Attach</h4>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+       <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <div class="drop">
+              <img src="../assets/img/cloud-icon.svg" alt="" >
+              <h6>Drag and drop files here or <span>browse</span></h6>
+            </div>
+            <h6 class="p-3">or</h6>
+            <div class="bfile pb-4">
+              <button class="btn text-white">Choose File</button>
+            </div>
+          </div>
+          <div class="col">
+            <h6><i class="bi bi-cloud-arrow-up fs-3"></i> Uploading...</h6>
+            <div class="container pt-4">
+              <h6>Temporary Example 2.pdf</h6>
+              <div class="progress" role="progressbar" aria-label="Info striped " aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" style="width: 50%"></div>
+              </div>
+            </div>
+            <div class="container pt-3">
+              <h6>Temporary Example 1.pdf</h6>
+              <div class="progress" role="progressbar" aria-label="Info striped " aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" style="width: 75%"></div>
+              </div>
+            </div>    
+          </div>
+        </div>
+
+       </div>
+       
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger " data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary"> Upload</button>
       </div>
 
     </div>
@@ -177,6 +232,9 @@ let loading = ref(false);
 let errorMsg = ref("");
 </script>
 <style scoped>
+  span{
+    color:#21a99b;
+  }
   .button .btn{
     background: #21a99b;
   }
@@ -209,6 +267,19 @@ let errorMsg = ref("");
     text-decoration: none; 
     color: #fff;
     border: 0px;
-    
+  }
+  .drop{
+    display: inline-block;
+    border: 1px solid ;
+    border:  7px dashed #bfbfbf; ;
+    padding: 50px;
+    border-radius: 10px;
+   
+    margin: 0 30px;
+  }
+  .bfile .btn{
+    background: #21a99b;
+     min-width: 70%;
+    min-height: 45px;
   }
 </style>
