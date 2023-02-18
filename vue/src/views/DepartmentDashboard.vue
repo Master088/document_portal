@@ -81,7 +81,7 @@
           <thead >
             <tr>
               <th scope="col">Icon</th>
-              <th scope="col">File Name</th>
+              <th scope="col">Name</th>
               <th scope="col">Last Modified</th>
               <th scope="col">Date modified</th>
               <th scope="col">Type</th>
