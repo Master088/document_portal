@@ -29,7 +29,27 @@ Route::middleware('auth:sanctum')->group(function () {
     // Route::resource('document', DocumentController::class);
 
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/document', [DocumentController::class, 'store']);
+    Route::post('/document/directory', [DocumentController::class, 'createFolder']);
+    Route::post('/document/directory/root', [DocumentController::class, 'createRootFolder']);
+
+    Route::get('/document/{left}', [DocumentController::class, 'getDocuments']);
+    Route::get('/document/search/{id}', [DocumentController::class, 'searchDocuments']);
+
+
+    Route::post('/document/file/upload', [DocumentController::class, 'uploadFile']);
+
+
+    
+    Route::patch('/document/directory/rename/{id}', [DocumentController::class, 'renameDirectory']);
+    Route::patch('/document/file/rename/{id}', [DocumentController::class, 'renameFile']);
+
+  
+
+    
+
+
+  
+
 });
 
 

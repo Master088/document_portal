@@ -31,48 +31,28 @@
     </div>
     <div class="container-fluid">
       <div class="row row-cols-1 row-cols-md-4 text-center ">
-        <div class="col mb-4 ">
-          <a href="#">
-            <div class="card border-0 card-box">
+       
+        <div  v-for="folder in folders" :key="folder.id" class="col mb-4">
+            <div class="card border-0 card-box "  v-on:click="redirect(folder.doc_left)">
               <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
               <div class="card-img-overlay">
-                <h2 class="card-title fw-normal"><u class="underline">2023</u> </h2>
+                <h2 class="card-title fw-normal"><u class="underline">{{ folder.name }}</u> </h2>
               </div>
             </div>
-          </a>
         </div>
-        
+
         <div class="col mb-4">
-          <a href="#">
-            <div class="card border-0 card-box ">
-              <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
-              <div class="card-img-overlay">
-                <h2 class="card-title fw-normal"><u class="underline">2022</u> </h2>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="#">
-            <div class="card border-0 card-box ">
-              <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
-              <div class="card-img-overlay">
-                <h2 class="card-title fw-normal"><u class="underline">2020</u> </h2>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="#">
+          <router-link to="/department/folder">
             <div class="card border-0 card-box ">
               <img src="../assets/img/folder.svg" class="card-img-top" alt="...">
               <div class="card-img-overlay">
                 <h5 class="card-title fw-normal"><u class="underline">View More</u> </h5>
               </div>
             </div>
-          </a>
+          </router-link>
         </div>
       </div>
+
     </div>
     <div class="container-fluid mt-2">
       <h5>New Files</h5>
@@ -89,16 +69,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr  v-for="file in files" :key="file.id">
               <td scope="row">
                 <a type="button" class="btn f-icon"
                   ><i class="bi bi-file-earmark-text"></i
                 ></a>
               </td>
-              <td class="fw-bold">Mark</td>
-              <td>Otto</td>
-              <td>02/12/2023</td>
-              <td>File</td>
+              <td class="fw-bold">{{ file.name }}</td>
+              <td>{{ file.last_modified_id }}</td>
+              <td>{{ file.date_modified }}</td>
+              <td>{{ file.type }}</td>
               <td class="action">
                 <a type="button" class="btn m-1"
                   ><i class="bi bi-eye-fill"></i
@@ -111,50 +91,8 @@
                 ></a>
               </td>
             </tr>
-            <tr>
-              <td scope="row">
-                <a type="button" class="btn f-icon"
-                  ><i class="bi bi-folder2-open"></i
-                ></a>
-              </td>
-              <td class="fw-bold">Jacob</td>
-              <td>Thornton</td>
-              <td>02/12/2023</td>
-              <td>Folder</td>
-              <td class="action">
-                <a type="button" class="btn m-1"
-                  ><i class="bi bi-eye-fill"></i
-                ></a>
-                <a type="button" class="btn m-1"
-                  ><i class="bi bi-pencil-square"></i
-                ></a>
-                <a type="button" class="btn m-1"
-                  ><i class="bi bi-trash"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row">
-                <a type="button" class="btn f-icon"
-                  ><i class="bi bi-folder2-open"></i
-                ></a>
-              </td>
-              <td class="fw-bold">Larry the Bird</td>
-              <td>Ladish</td>
-              <td>02/12/2023</td>
-              <td>Folder</td>
-              <td class="action">
-                <a type="button" class="btn m-1"
-                  ><i class="bi bi-eye-fill"></i
-                ></a>
-                <a type="button" class="btn m-1"
-                  ><i class="bi bi-pencil-square"></i
-                ></a>
-                <a type="button" class="btn m-1"
-                  ><i class="bi bi-trash"></i
-                ></a>
-              </td>
-            </tr>
+            
+            
           </tbody>
         </table>
       </div>
@@ -182,9 +120,16 @@
 <script setup>
 // import store from "../store";
 import { useRouter } from "vue-router";
-import { ref, computed } from "vue";
+import { ref, computed, watchEffect } from "vue";
+import { GET_DOCUMENTS , CREATE_FOLDER_ACTION} from "../store/store-constants";
+import store from '../store';
 
 const router = useRouter();
+
+const folders = ref(computed(() => store.state.documents.folders))|| [];
+const files = ref(computed(() => store.state.documents.files))|| [];
+
+
 
 const user = {
   email: "",
@@ -193,6 +138,56 @@ const user = {
 let loading = ref(false);
 let errorMsg = ref("");
 
+
+
+const getFolders=()=>{
+  console.log("helo")
+  store
+    .dispatch(`documents/${GET_DOCUMENTS}`, {
+      left:1,
+      type:"folder",
+      limit:3
+    })
+    .then(() => {
+      // loading.value = false;
+      //   console.log("data here ", data.data);
+    })
+    .catch((err) => {
+      console.log("error", err);
+      // loading.value = false;
+      //   errorMsg.value = err.response.data.error;
+    });
+   
+    
+}
+
+const getFiles=()=>{
+  store
+    .dispatch(`documents/${GET_DOCUMENTS}`, {
+      left:1,
+      type:"file",
+      // limit:3
+    })
+    .then(() => {
+      // loading.value = false;
+      //   console.log("data here ", data.data);
+    })
+    .catch((err) => {
+      console.log("error", err);
+      // loading.value = false;
+      //   errorMsg.value = err.response.data.error;
+    });
+   
+    
+}
+ 
+    watchEffect(() => getFolders())
+    watchEffect(() => getFiles())
+
+    const redirect=(id)=>{
+  console.log("hello123")
+  router.push(`/department/folder/${id}`)
+}
 </script>
 
 <script>

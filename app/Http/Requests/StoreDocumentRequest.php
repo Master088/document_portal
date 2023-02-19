@@ -27,8 +27,8 @@ class StoreDocumentRequest extends FormRequest
             'name' => ['required', 'min:2', 'max:200'],
             'type' => ['required', 'min:2', 'max:10'],
             'parent' => ['required'],
-            'doc_left' => ['required'],
-            'doc_right' => ['required'],
+            // 'doc_left' => ['required'],
+            // 'doc_right' => ['required'],
         ];
     }
 }

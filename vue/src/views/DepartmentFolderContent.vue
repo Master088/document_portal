@@ -60,58 +60,29 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row"><i class="bi bi-file-earmark-text fs-5"></i></th>
-                <td>Dept.File</td>
-                <td>Otto</td>
-                <td>13/02/2023</td>
-                <td>file</td>
-                <td> <div class="dropdown">
-                      <a class="btn  " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-three-dots "></i>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye"></i> View</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i> Archive</a></li>
-                      </ul>
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"><i class="bi bi-folder fs-5"></i></th>
-                <td>Dept.Folder</td>
-                <td>Thornton</td>
-                <td>13/02/2023</td>
-                <td>folder</td>
-                <td> <div class="dropdown">
-                      <a class="btn  " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-three-dots "></i>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye"></i> View</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i> Archive</a></li>
-                      </ul>
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"><i class="bi bi-file-earmark-text fs-5"></i></th>
-                <td>Dept.File</td>
-                <td>Larry</td>
-                <td>13/02/2023</td>
-                <td>file</td>
-                <td>
-                    <div class="dropdown">
-                      <a class="btn  " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-three-dots "></i>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye"></i> View</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i> Archive</a></li>
-                      </ul>
-                    </div>
-                </td>
-              </tr>
+              <tr  v-for="document in documents" :key="document.id">
+              <td scope="row">
+                <a type="button" class="btn f-icon">
+                  <i v-if="document.type=='file'" class="bi bi-file-earmark-text"></i>
+                  <i v-if="document.type=='folder'"  class="bi bi-folder fs-5"></i>
+                </a>
+              </td>
+              <td class="fw-bold">{{ document.name }}</td>
+              <td>{{ document.last_modified_id }}</td>
+              <td>{{ document.date_modified }}</td>
+              <td>{{ document.type }}</td>
+              <td class="action">
+                <a type="button" class="btn m-1"
+                  ><i class="bi bi-eye-fill"></i
+                ></a>
+                <a type="button" class="btn m-1"
+                  ><i class="bi bi-pencil-square"></i
+                ></a>
+                <a type="button" class="btn m-1"
+                  ><i class="bi bi-trash"></i
+                ></a>
+              </td>
+            </tr>
               
             </tbody>
           </table>
@@ -136,31 +107,38 @@
         </ul>
       </nav>
     </div>
-<div class="modal fade" id="new-folder">
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Create New Folder</h4>
+   
+    <div class="modal fade" id="new-folder" tabindex="-1" role="dialog" aria-labelledby="new-folder"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="create">Create New Folder</h5>
+            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form @submit.prevent="handleSubmit">
+              <div class="form-group">
+                <label for="year">Year <span class="text-danger">*</span></label>
+                <input v-model="name" type="text" class="form-control" id="year" placeholder="Enter Year">
+                <div v-if="name" class="text-danger">
+                  {{ errorMsg }}
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+          </div>
+          
+        </div>
       </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <label for="email"><b>Folder Name</b></label>
-        <input type="text" class="form-control" id="new-folder" placeholder="Enter Folder Name" name="new-folder">
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary"><b><i class="bi bi-folder text-white"></i> Create</b></button>
-      </div>
-
     </div>
-  </div>
-</div>
-
+  
 <!-- The Modal -->
 <div class="modal fade" id="upload">
   <div class="modal-dialog modal-xl">
@@ -219,17 +197,80 @@
 
 <script setup>
 // import store from "../store";
-import { useRouter } from "vue-router";
-import { ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { ref, computed, watchEffect } from "vue";
+import { CREATE_FOLDER_ACTION, GET_DOCUMENTS } from "../store/store-constants";
+import store from '../store';
+
 
 const router = useRouter();
 
-const user = {
-  email: "",
-  password: "",
-};
+const route = useRoute();
+ 
 let loading = ref(false);
 let errorMsg = ref("");
+const name=ref("")
+
+const left = ref (route.params.left ||0);
+const parentData = ref(computed(() => store.state.documents.parentData))|| {};
+const documents = ref(computed(() => store.state.documents.documents))|| [];
+
+const getdocuments=()=>{
+  console.log("helo",left.value)
+  store
+    .dispatch(`documents/${GET_DOCUMENTS}`, {
+      left:left.value,
+      type:"",
+      limit:0
+    })
+    .then(() => {
+      // loading.value = false;
+      //   console.log("data here ", data.data);
+    })
+    .catch((err) => {
+      console.log("error", err);
+      // loading.value = false;
+      //   errorMsg.value = err.response.data.error;
+    });
+   
+   
+}
+const handleSubmit= ()=>{
+      console.log("hello",name.value)
+       
+      /** set validation laster */
+      if(name.value){
+        errorMsg.value=""
+        store
+        .dispatch(`documents/${CREATE_FOLDER_ACTION}`, {
+          name:name.value,
+          type:"folder",
+          parent:parentData.value?.id,
+        })
+        .then(() => {
+          // loading.value = false;
+          //   console.log("data here ", data.data);
+        })
+        .catch((err) => {
+          console.log("error", err);
+          loading.value = false;
+          //   errorMsg.value = err.response.data.error;
+        });
+
+      }else{
+        errorMsg.value="Please enter year"
+      }
+
+      // this.yearValidation = this.year.length < 4 || this.year.length > 4 ? 'The year must at least 4 number only' : ''
+     
+}
+
+const redirect=(id)=>{
+  console.log("hello123",id)
+  router.push(`/department/folder/${id}`)
+}
+ 
+watchEffect(() => getdocuments())
 </script>
 <style scoped>
   span{

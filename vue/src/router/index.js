@@ -25,12 +25,12 @@ const routes = [
         component: DepartmentDashboard,
       },
       {
-        path: "/department/folder/:department_id",
+        path: "/department/folder",
         name: "DepartmentFolder",
         component: DepartmentFolder,
       },
       {
-        path: "/department/folder/:department_id/year/:year/:id",
+        path: "/department/folder/:left",
         name: "DepartmentFolderContent",
         component: DepartmentFolderContent,
       },

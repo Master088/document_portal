@@ -9,7 +9,12 @@
           <hr />
         </div>
           <ul>
-            <li class="nav-bar"><a href="#"><i class="bi bi-file-earmark-text"></i> <span class="px-4">Dashboard</span></a></li>
+            <li class="nav-bar">
+              
+              
+              <router-link to="/department/dashboard" ><i class="bi bi-file-earmark-text"></i> <span class="px-4">Dashboard</span></router-link>
+            
+            </li>
             <li class="nav-bar"><a href="#"><i class="bi bi-archive"></i> <span class="px-4">Archive</span></a></li>
           </ul>
       </div>
