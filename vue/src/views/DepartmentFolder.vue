@@ -18,7 +18,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="handleSubmit">
+            <form>
               <div class="form-group">
                 <label for="year">Year <span class="text-danger">*</span></label>
                 <input v-model="name" type="text" class="form-control" id="year" placeholder="Enter Year">
@@ -32,7 +32,6 @@
             </div>
             </form>
           </div>
-          
         </div>
       </div>
     </div>
